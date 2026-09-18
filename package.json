@@ -1,0 +1,21 @@
+{
+  "name": "slime-movement",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A genuine deformable-body movement laboratory for Specimen.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "tsc && node scripts/build.mjs",
+    "dev": "npm run build && node scripts/serve.mjs",
+    "preview": "node scripts/serve.mjs",
+    "type-check": "tsc --noEmit",
+    "test": "npm run build && node --test tests/*.test.mjs",
+    "test:browser": "npm run build && python3 tests/browser_smoke.py"
+  },
+  "devDependencies": {
+    "typescript": "5.8.3"
+  }
+}

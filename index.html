@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#10191d" />
+  <meta name="description" content="A playable 3D soft-body movement experiment: crawl, roll, compress, grip and flow." />
+  <title>Specimen — Movement laboratory</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath fill='%23c0ed78' d='M4 27C1 10 15 1 26 6c12 5 15 22 4 27S6 37 4 27'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header>
+    <a class="brand" href="./" aria-label="Restart movement laboratory"><span class="brand-icon"></span> SPECIMEN<span class="brand-divider">/</span><span class="brand-sub">Movement laboratory</span></a>
+    <span class="live"><i></i> EXPERIMENT 001</span>
+  </header>
+  <div class="layout">
+    <aside>
+      <div class="eyebrow">SOFT BODY. SHARP INTENT.</div>
+      <h1>Learn to<br /><em>be the slime.</em></h1>
+      <p class="intro">Not a character wearing a blob.<br />A body that pulls, grips and gives.</p>
+      <nav id="stations" aria-label="Test stations"></nav>
+      <section class="tuning">
+        <div class="section-label">THE MATERIAL <span>LIVE TUNING</span></div>
+        <div class="presets" role="group" aria-label="Material presets">
+          <button data-preset="balanced" class="selected">Balanced</button><button data-preset="goo">Goo</button><button data-preset="spring">Spring</button>
+        </div>
+        <label for="stiffness">Body stiffness <output id="stiffness-value">1.00×</output></label>
+        <input id="stiffness" type="range" min="0.35" max="2" step="0.05" value="1" />
+        <label for="traction">Surface traction <output id="traction-value">1.00×</output></label>
+        <input id="traction" type="range" min="0.2" max="1.8" step="0.05" value="1" />
+        <label class="check"><input id="debug" type="checkbox" /> Show particles & grip anchors <kbd>F</kbd></label>
+      </section>
+      <p class="aside-footer"><span class="tiny-dot"></span> 42 physical points · one continuous body</p>
+    </aside>
+    <main id="viewport">
+      <canvas id="scene" tabindex="0" aria-label="3D slime playground. Use W A S D to move, hold Space and release to jump, Shift to grip, Q to squeeze."></canvas>
+      <div class="scene-heading">
+        <div class="eyebrow" id="station-subtitle"></div>
+        <h2 id="station-title"></h2>
+        <p id="station-hint"></p>
+      </div>
+      <div class="scene-tools"><button id="reset" title="Reset station (R)">↺ <span>Reset</span></button><button id="pause" title="Pause (P)">Pause</button></div>
+      <div id="notice" role="status" aria-live="polite"></div>
+      <div class="scene-bottom">
+        <div class="state-row"><span id="state">GROUNDED</span><span id="camera-hint">Drag to orbit · Scroll to zoom · C to recenter</span></div>
+        <div class="charge"><div class="charge-label">COMPRESSION <span id="charge-label">HOLD SPACE</span></div><div class="charge-track"><div id="charge-fill"></div></div></div>
+        <div class="telemetry">
+          <div><small>SPEED</small><strong id="speed">0.0 <span>m/s</span></strong></div>
+          <div><small>VOLUME</small><strong id="volume">100 <span>%</span></strong></div>
+          <div><small>CONTACTS</small><strong id="contacts">0</strong></div>
+          <div><small>ANCHORS</small><strong id="anchors">0</strong></div>
+          <div><small>PHYSICS</small><strong id="timing">0.0 <span>ms</span></strong></div>
+        </div>
+      </div>
+      <div id="fatal" role="alert" hidden></div>
+    </main>
+  </div>
+  <footer class="controls">
+    <span><kbd>W A S D</kbd> Move</span><span><kbd>Space</kbd> Hold → release to jump</span><span><kbd>Shift</kbd> Grip / climb</span><span><kbd>Q</kbd> Squeeze / slip</span><span><kbd>1–5</kbd> Test stations</span>
+  </footer>
+  <div class="touch-controls" aria-label="Touch controls">
+    <div><button data-key="KeyA" aria-label="Move left">←</button><button data-key="KeyW" aria-label="Move forward">↑</button><button data-key="KeyS" aria-label="Move backward">↓</button><button data-key="KeyD" aria-label="Move right">→</button></div>
+    <div><button data-key="ShiftLeft">Grip</button><button data-key="KeyQ">Flow</button><button data-key="Space">Jump</button></div>
+  </div>
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
